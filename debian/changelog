@@ -1,0 +1,6 @@
+hamonikr-welcome (1.0.0) jin; urgency=medium
+
+  * first commit
+    - change mintwelcome to hamonikrwelcome
+
+ -- HamoniKR <pkg@hamonikr.org>  Fri, 22 Jan 2021 11:19:09 +0900
