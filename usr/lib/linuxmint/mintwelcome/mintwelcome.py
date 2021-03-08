@@ -59,7 +59,10 @@ class MintWelcome():
             architecture = "32-bit"
 
         # distro-specific
-        dist_name = "HamoniKR"
+        with open("/etc/lsb-release") as f:
+            config = dict([line.strip().split("=") for line in f])
+        dist_name = config['DISTRIB_ID']
+
         if os.path.exists("/usr/share/doc/debian-system-adjustments/copyright"):
             dist_name = "LMDE"
 
@@ -103,6 +106,10 @@ class MintWelcome():
         else:
             # Hide settings
             builder.get_object("box_first_steps").remove(builder.get_object("box_settings"))
+
+        # Hide Desktop colors and Panel layout
+        builder.get_object("box_first_steps").remove(builder.get_object("box_colors"))
+        builder.get_object("box_first_steps").remove(builder.get_object("box_cinnamon"))
 
         # Hide Cinnamon layout settings in other DEs
         if not de_is_cinnamon:
